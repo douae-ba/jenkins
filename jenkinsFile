@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('HelloWorld') {
+            steps {
+                bat 'javac HelloWorld.java'
+                bat 'java HelloWorld'
+            }
+        }
+
+        stage('Merci') {
+            steps {
+                bat 'javac Merci.java'
+                bat 'java Merci'
+            }
+        }
+
+        stage('DeRien') {
+            steps {
+                bat 'javac DeRien.java'
+                bat 'java DeRien'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline terminée avec succès !'
+        }
+        failure {
+            echo 'Echec de la pipeline.'
+        }
+    }
+}
